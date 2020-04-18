@@ -76,7 +76,8 @@ public class Ball {
 	public void onPlayerCollision(String playerId) {
 		if (playerId == "Player 1") {
 			this.setDirectionX(1);
-		} else {
+		}
+		if (playerId == "Player 2") {
 			this.setDirectionX(0);
 		}
 
