@@ -86,7 +86,7 @@ public class Player {
 
 	public String getId() {
 
-		return "";
+		return this.id;
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class Player {
 
 	public double getWidth() {
 
-		return 20;
+		return this.width;
 	}
 
 	/**
@@ -108,7 +108,7 @@ public class Player {
 
 	public double getHeight() {
 
-		return 100;
+		return this.height;
 	}
 
 	/**
