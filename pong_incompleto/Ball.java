@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Random;
 
 /**
  * Esta classe representa a bola usada no jogo. A classe princial do jogo (Pong)
@@ -23,15 +24,19 @@ public class Ball {
 	 * @param speed  velocidade da bola (em pixels por millisegundo).
 	 */
 	private double cx, cy, width, height, speed;
+	private int directionX, directionY;
 	private Color color;
 
 	public Ball(double cx, double cy, double width, double height, Color color, double speed) {
+		Random generateDirection = new Random();
 		this.cx = cx;
 		this.cy = cy;
 		this.width = width;
 		this.height = height;
 		this.color = color;
 		this.speed = speed;
+		this.directionX = generateDirection.nextInt(2);
+		this.directionY = generateDirection.nextInt(2);
 	}
 
 	/**
@@ -51,8 +56,14 @@ public class Ball {
 	 */
 
 	public void update(long delta) {
-		this.setCx(this.getCx() + speed);
-		this.setCy(this.getCy() + speed);
+		if (this.getDirectionX() == 1)
+			this.setCx(this.getCx() + speed);
+		if (this.getDirectionX() == 0)
+			this.setCx(this.getCx() - speed);
+		if (this.getDirectionY() == 1)
+			this.setCy(this.getCy() + speed);
+		if (this.getDirectionY() == 0)
+			this.setCy(this.getCy() - speed);
 		this.draw();
 	}
 
@@ -73,7 +84,14 @@ public class Ball {
 	 */
 
 	public void onWallCollision(String wallId) {
-		this.setSpeed(-this.getSpeed());
+		if (wallId == "Bottom")
+			this.setDirectionY(0);
+		if (wallId == "Top")
+			this.setDirectionY(1);
+		if (wallId == "Left")
+			this.setDirectionX(1);
+		if (wallId == "Right")
+			this.setDirectionX(0);
 	}
 
 	/**
@@ -157,6 +175,22 @@ public class Ball {
 
 	public void setSpeed(double speed) {
 		this.speed = speed;
+	}
+
+	public int getDirectionX() {
+		return this.directionX;
+	}
+
+	public void setDirectionX(int x) {
+		this.directionX = x;
+	}
+
+	public int getDirectionY() {
+		return this.directionY;
+	}
+
+	public void setDirectionY(int y) {
+		this.directionY = y;
 	}
 
 }
