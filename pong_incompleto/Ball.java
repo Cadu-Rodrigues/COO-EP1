@@ -74,6 +74,11 @@ public class Ball {
 	 */
 
 	public void onPlayerCollision(String playerId) {
+		if (playerId == "Player 1") {
+			this.setDirectionX(1);
+		} else {
+			this.setDirectionX(0);
+		}
 
 	}
 
@@ -125,7 +130,18 @@ public class Ball {
 	 */
 
 	public boolean checkCollision(Player player) {
-
+		if (player.getId() == "Player 1") {
+			if (player.getCx() >= this.getCx() - player.getWidth()
+					&& this.getCy() <= player.getCy() + player.getHeight()
+					&& this.getCy() >= player.getCy() - player.getHeight())
+				return true;
+		}
+		if (player.getId() == "Player 2") {
+			if (player.getCx() <= this.getCx() + player.getWidth()
+					&& this.getCy() <= player.getCy() + player.getHeight()
+					&& this.getCy() >= player.getCy() - player.getHeight())
+				return true;
+		}
 		return false;
 	}
 
