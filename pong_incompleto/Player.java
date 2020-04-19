@@ -60,8 +60,10 @@ public class Player {
 	 */
 
 	public void moveUp(long delta) {
-		this.setCy(this.getCy() - speed);
-		this.draw();
+		if ((this.getCy() - this.getHeight() / 2) > v_limit[0]) {
+			this.setCy(this.getCy() - speed);
+			this.draw();
+		}
 	}
 
 	/**
@@ -74,8 +76,10 @@ public class Player {
 	 */
 
 	public void moveDown(long delta) {
-		this.setCy(this.getCy() + speed);
-		this.draw();
+		if ((this.getCy() + this.getHeight() / 2) < v_limit[1]) {
+			this.setCy(this.getCy() + speed);
+			this.draw();
+		}
 	}
 
 	/**
