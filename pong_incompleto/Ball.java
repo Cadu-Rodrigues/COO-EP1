@@ -132,16 +132,18 @@ public class Ball {
 
 	public boolean checkCollision(Player player) {
 		if (player.getId() == "Player 1") {
-			if (player.getCx() >= this.getCx() - player.getWidth()
-					&& this.getCy() + this.height <= player.getCy() + player.getHeight()
-					&& this.getCy() - this.height >= player.getCy() - player.getHeight())
+			if ((this.getCx() - (this.width / 2)) <= player.getCx()
+					&& this.getCy() <= player.getCy() + (player.getHeight() / 2)
+					&& this.getCy() >= player.getCy() - (player.getHeight() / 2))
 				return true;
+
 		}
 		if (player.getId() == "Player 2") {
-			if (player.getCx() <= this.getCx() + player.getWidth()
-					&& this.getCy() + this.height <= player.getCy() + player.getHeight()
-					&& this.getCy() - this.height >= player.getCy() - player.getHeight())
+			if ((this.getCx() + (this.width / 2)) >= player.getCx()
+					&& (this.getCy() + (this.height / 2)) <= player.getCy() + (player.getHeight() / 2)
+					&& (this.getCy() - (this.height / 2)) >= player.getCy() - (player.getHeight() / 2))
 				return true;
+
 		}
 		return false;
 	}
