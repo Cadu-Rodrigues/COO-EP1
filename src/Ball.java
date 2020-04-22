@@ -211,5 +211,4 @@ public class Ball {
 	public void setDirectionY(int y) {
 		this.directionY = y;
 	}
-
 }

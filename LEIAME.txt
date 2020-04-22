@@ -1,0 +1,4 @@
+##### Instruções de compilação #####
+1 - Abra a pasta src no terminal
+2 - Execute o comando "make"
+3 - Execute o comando "java Pong"
